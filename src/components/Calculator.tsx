@@ -11,9 +11,10 @@ const Calculator = () => {
     evaluateExpression,
   } = useCalculatorStore();
 
-  const handleButtonClick = (value: string) => {
-    appendToExpression(value);
-  };
+  const handleButtonClick = useCallback(
+    (value: string) => appendToExpression(value),
+    [appendToExpression]
+  );
 
   const generateNumberSequence = useCallback(
     (start: number, end: number) =>
