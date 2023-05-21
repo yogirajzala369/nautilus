@@ -1,107 +1,28 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
-import {
-  Box,
-  Button,
-  Center,
-  Grid,
-  Heading,
-  Input,
-  InputProps,
-} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, Button, Center, Grid, GridItem, Heading } from "@chakra-ui/react";
 import { useCalculatorStore } from "../store";
 import Confetti from "react-confetti";
-
-const CustomInput = (props: InputProps) => {
-  return (
-    <Input
-      {...props}
-      textAlign="right"
-      mb={4}
-      size="lg"
-      variant="filled"
-      borderRadius="md"
-      placeholder="0"
-      readOnly
-      _placeholder={{ color: "gray.400" }}
-      _focus={{ borderColor: "teal.400" }}
-    />
-  );
-};
+import { CustomInput } from "./CustomInput";
+import { Numbers } from "./Numbers";
 
 const Calculator = () => {
-  const {
-    expression,
-    result,
-    clear,
-    removeFromExpression,
-    appendToExpression,
-    evaluateExpression,
-  } = useCalculatorStore();
+  const { expression, result, evaluateExpression } = useCalculatorStore();
   const [showConfetti, setShowConfetti] = useState(false);
   const [loadingDone, setLoadingDone] = useState(false);
 
   useEffect(() => {
     setShowConfetti(true);
 
-    // Simulating loading completion after 5 seconds
     const loadingTimeout = setTimeout(() => {
       setLoadingDone(true);
     }, 5000);
 
-    return () => clearTimeout(loadingTimeout); // Clear the loading timeout if the component unmounts
+    return () => clearTimeout(loadingTimeout);
   }, []);
 
   useEffect(() => {
-    if (loadingDone) setShowConfetti(false); // Stop displaying confetti when loading is done
+    if (loadingDone) setShowConfetti(false);
   }, [loadingDone]);
-
-  const handleButtonClick = useCallback(
-    (value: string) => appendToExpression(value),
-    [appendToExpression]
-  );
-
-  const generateNumberSequence = useCallback(
-    (start: number, end: number) =>
-      Array.from({ length: end - start + 1 }, (_, index) =>
-        (index + start).toString()
-      ),
-    []
-  );
-
-  const numbers = useMemo(
-    () => [
-      "0",
-      "C",
-      "DEL",
-      "*",
-      ...generateNumberSequence(7, 9),
-      "/",
-      ...generateNumberSequence(4, 6),
-      "-",
-      ...generateNumberSequence(1, 3),
-      "+",
-    ],
-    [generateNumberSequence]
-  );
-
-  const renderButton = useCallback(
-    (num: string) => (
-      <Button
-        key={num}
-        onClick={() =>
-          num === "C"
-            ? clear()
-            : num === "DEL"
-            ? removeFromExpression()
-            : handleButtonClick(num)
-        }
-        size="lg"
-      >
-        {num}
-      </Button>
-    ),
-    [clear, handleButtonClick, removeFromExpression]
-  );
 
   return (
     <Center h="100vh">
@@ -125,15 +46,17 @@ const Calculator = () => {
             backgroundColor="black"
           />
           <Grid templateColumns="repeat(4, 1fr)" gap={2}>
-            {numbers.map(renderButton)}
-            <Button
-              onClick={evaluateExpression}
-              size="lg"
-              w="100%"
-              colorScheme="teal"
-            >
-              Calculate
-            </Button>
+            <Numbers />
+            <GridItem colSpan={4}>
+              <Button
+                onClick={evaluateExpression}
+                size="lg"
+                w="100%"
+                colorScheme="teal"
+              >
+                Calculate
+              </Button>
+            </GridItem>
           </Grid>
         </Box>
       </Box>
