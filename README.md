@@ -1,10 +1,23 @@
-# Getting Started with Create React App
+## What features this app includes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- A calculator that supports four math operations
+- It has a state management store using Zustand
+- ChakraUI for styling the app
+- Confetti animation on initial page load
+- Responsive Design: It is a complete responsive site that supports variety of screen
+sizes, from mobile to desktop.
+- Error Handling
+- Web accessible with complete keyboard and screenreader compatibility with right color contrast ratio 
 
-## Available Scripts
+# View  
+- Find deployed project on vercel: https://nautilus-teal.vercel.app/
 
-In the project directory, you can run:
+
+# Getting Started
+
+After cloning the repo install node modules using `npm install`
+
+the, run the development server:
 
 ### `npm start`
 
