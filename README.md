@@ -1,3 +1,7 @@
+## Nautilus
+
+- this is a calculator app built using React to perform basic math operations.
+
 ## What features this app includes
 
 - A calculator that supports four math operations
@@ -17,6 +21,7 @@ sizes, from mobile to desktop.
 | <img width="1639" alt="Screen Shot 2023-05-21 at 4 49 36 PM" src="https://github.com/yogirajzala369/nautilus/assets/111154494/072b6beb-aac9-4053-b2f3-a55ebaaa8ecf"> | <img width="537" alt="Screen Shot 2023-05-21 at 4 50 45 PM" src="https://github.com/yogirajzala369/nautilus/assets/111154494/33f7f787-42a9-4b55-ba78-14cad6551a7b">
 | <img width="1661" alt="Screen Shot 2023-05-21 at 4 52 44 PM" src="https://github.com/yogirajzala369/nautilus/assets/111154494/760d9c3d-da66-48ce-8064-83c79dc3149c"> | <img width="527" alt="Screen Shot 2023-05-21 at 4 51 29 PM" src="https://github.com/yogirajzala369/nautilus/assets/111154494/d3bfbd79-e1d6-4708-9193-31dbdf6f1fff">
 
+Screen recording: https://github.com/yogirajzala369/nautilus/assets/111154494/45e3cd09-0bd9-4fb2-990d-164703ebbbb8
 
 # Getting Started
 
